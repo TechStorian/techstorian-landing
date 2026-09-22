@@ -15,7 +15,7 @@ const materials = [
   <section id="top" class="hero">
     <div class="wrap grid">
       <div class="copy">
-        <p class="label eyebrow">Research software for cultural heritage</p>
+        <p class="label eyebrow">Software for publishers, academics and cultural heritage</p>
         <h1>Software for the <em>historical record</em>.</h1>
         <p class="lede">
           techstorian builds tools for archives, libraries, universities and everyone whose work
