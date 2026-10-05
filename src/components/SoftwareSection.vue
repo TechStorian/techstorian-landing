@@ -30,7 +30,7 @@ const statusLabel: Record<RefStatus, string> = {
             <GhostMark class="ghost" />
             <span>exor<span class="hollow">CITE</span></span>
           </h3>
-          <p class="tagline">Exorcise the ghost citations.</p>
+          <p class="tagline">Exorcise ghost citations.</p>
           <p class="desc">
             Upload a paper, thesis or exam submission. exorCITE extracts every reference and checks
             that each one exists by looking it up in doi.org, Crossref, DataCite, OpenAlex and
