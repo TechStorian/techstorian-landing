@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { links, openSource, refcheckFeatures, refcheckSample, type RefStatus } from '../content'
+import GhostMark from './GhostMark.vue'
+import { exorciteFeatures, exorciteSample, links, openSource, type RefStatus } from '../content'
 
 const statusLabel: Record<RefStatus, string> = {
   valid: 'Valid',
@@ -25,30 +26,33 @@ const statusLabel: Record<RefStatus, string> = {
       <article class="product">
         <div class="product-copy">
           <p class="label kicker">Product · Available to institutions</p>
-          <h3>RefCheck</h3>
-          <p class="tagline">Find fabricated references in any paper.</p>
+          <h3 class="product-name">
+            <GhostMark class="ghost" />
+            <span>exor<span class="hollow">CITE</span></span>
+          </h3>
+          <p class="tagline">Exorcise the ghost citations.</p>
           <p class="desc">
-            Upload a paper, thesis or exam submission. RefCheck extracts every reference and checks
+            Upload a paper, thesis or exam submission. exorCITE extracts every reference and checks
             that each one exists by looking it up in doi.org, Crossref, DataCite, OpenAlex and
-            library catalogues. You get a clear list of what exists, what doesn’t, and why.
+            library catalogues. You get a clear list of what’s real, what’s a ghost, and why.
           </p>
           <ul class="features">
-            <li v-for="f in refcheckFeatures" :key="f.title">
+            <li v-for="f in exorciteFeatures" :key="f.title">
               <strong>{{ f.title }}.</strong> {{ f.body }}
             </li>
           </ul>
-          <a class="btn btn-primary" :href="links.refcheck">
-            Visit RefCheck <span class="arrow">→</span>
+          <a class="btn btn-primary" :href="links.exorcite">
+            Visit exorCITE <span class="arrow">→</span>
           </a>
         </div>
 
-        <div class="report" aria-label="Example RefCheck report">
+        <div class="report" aria-label="Example exorCITE report">
           <div class="report-head">
             <span class="label">Report · bibliography.pdf</span>
             <span class="label">3 references</span>
           </div>
           <ol>
-            <li v-for="(ref, i) in refcheckSample" :key="i" class="slip">
+            <li v-for="(ref, i) in exorciteSample" :key="i" class="slip">
               <span class="num">{{ String(i + 1).padStart(2, '0') }}</span>
               <div>
                 <p class="cite">{{ ref.citation }}</p>
@@ -109,6 +113,26 @@ const statusLabel: Record<RefStatus, string> = {
   margin-top: 14px;
   font-size: clamp(2.4rem, 5vw, 3.2rem);
   font-weight: 450;
+}
+
+/* The exorCITE wordmark: "exor" solid, "CITE" in outline, as the hollow thing being driven out. */
+.product-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  color: var(--oxblood);
+  font-weight: 600;
+}
+
+.product-name .ghost {
+  width: 0.78em;
+  height: auto;
+}
+
+.hollow {
+  letter-spacing: 0.04em;
+  color: transparent;
+  -webkit-text-stroke: max(0.025em, 1px) var(--oxblood);
 }
 
 .tagline {

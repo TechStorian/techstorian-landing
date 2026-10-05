@@ -7,7 +7,7 @@ export const contact = {
 }
 
 export const links = {
-  refcheck: 'https://refcheck.techstorian.com/',
+  exorcite: 'https://refcheck.techstorian.com/',
   substack: 'https://techstorian.substack.com/',
   founderSite: 'https://harbojohnston.dk',
   github: 'https://github.com/VictorHarbo',
@@ -18,7 +18,7 @@ export const links = {
 
 export type RefStatus = 'valid' | 'partial' | 'invalid'
 
-export const refcheckSample: { citation: string; status: RefStatus; note: string }[] = [
+export const exorciteSample: { citation: string; status: RefStatus; note: string }[] = [
   {
     citation:
       'Anderson, B. (1991). Imagined Communities: Reflections on the Origin and Spread of Nationalism. London: Verso.',
@@ -38,7 +38,7 @@ export const refcheckSample: { citation: string; status: RefStatus; note: string
   },
 ]
 
-export const refcheckFeatures = [
+export const exorciteFeatures = [
   {
     title: 'Evidence, not a probability score',
     body: 'Every reference gets a status and an explanation: what was searched for, where, and what was found. Anyone can check the answer.',
@@ -95,7 +95,7 @@ export const principles = [
 export const services = [
   {
     title: 'Products',
-    body: 'Ready-made software for institutions, starting with RefCheck for universities, journals and research libraries.',
+    body: 'Ready-made software for institutions, starting with exorCITE for universities, journals and research libraries.',
   },
   {
     title: 'Research software',

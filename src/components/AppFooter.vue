@@ -13,7 +13,7 @@ const year = new Date().getFullYear()
         <span>© {{ year }} techstorian · {{ contact.location }}</span>
       </div>
       <nav aria-label="Footer">
-        <a :href="links.refcheck">RefCheck</a>
+        <a :href="links.exorcite">exorCITE</a>
         <a :href="links.substack">Substack</a>
         <a :href="links.github">GitHub</a>
         <a :href="links.linkedin">LinkedIn</a>

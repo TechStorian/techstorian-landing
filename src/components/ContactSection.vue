@@ -8,7 +8,7 @@ import { contact } from '../content'
       <p class="label">Fol. 05 — Correspondence</p>
       <h2>Have a collection, a problem, or a <em>project</em>?</h2>
       <p class="lede">
-        Whether you want a RefCheck demo for your institution, help with a web archive, or a
+        Whether you want an exorCITE demo for your institution, help with a web archive, or a
         workshop for your researchers, write to us!
       </p>
       <a class="mail" :href="`mailto:${contact.email}`">{{ contact.email }}</a>

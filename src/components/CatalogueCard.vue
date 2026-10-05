@@ -4,7 +4,7 @@ import { contact } from '../content'
 const entries = [
   { key: 'Subject', value: 'Research software — Cultural heritage' },
   { key: 'Scope', value: 'Web archives · Libraries · Research integrity' },
-  { key: 'Holdings', value: 'RefCheck; open-source research tools' },
+  { key: 'Holdings', value: 'exorCITE; open-source research tools' },
   { key: 'Place', value: contact.location },
 ]
 </script>

@@ -18,4 +18,4 @@ All copy and links (products, open-source projects, essays, founder bio, contact
 [`src/content.ts`](src/content.ts). The page sections are in `src/components/`, and the colour and
 type tokens (with a dark-mode variant) are in [`src/assets/main.css`](src/assets/main.css).
 
-The oxblood accent (`#5a2a22`) is shared with [RefCheck](https://refcheck.techstorian.com/).
+The oxblood accent (`#5a2a22`) is shared with [exorCITE](https://refcheck.techstorian.com/).
