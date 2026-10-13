@@ -2,7 +2,7 @@
 // without touching the components.
 
 export const contact = {
-  email: 'vijo@cas.au.dk',
+  email: 'info@techstorian.com',
   location: 'Aarhus, Denmark',
 }
 
@@ -120,6 +120,7 @@ export const writing = {
 export const founder = {
   name: 'Victor Harbo Johnston',
   role: 'Founder',
+  email: 'victor@techstorian.com',
   bio: [
     'Victor is a digital historian and software developer. He is a PhD fellow in History at Aarhus University, working on the archived web as a historical source in the ERC-funded project WEB CHILD, which studies changing childhoods in the early era of the WWW.',
     'Before that he was a software developer at the Royal Danish Library (2023–2025), where he became a core developer of SolrWayback. He teaches Data Science for Historians and has written for The Programming Historian.',

@@ -3,6 +3,7 @@ import { founder, links } from '../content'
 import portrait from '../assets/victor.jpg'
 
 const profiles = [
+  { label: founder.email, href: `mailto:${founder.email}` },
   { label: 'harbojohnston.dk', href: links.founderSite },
   { label: 'GitHub', href: links.github },
   { label: 'LinkedIn', href: links.linkedin },
