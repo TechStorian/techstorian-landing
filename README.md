@@ -18,4 +18,12 @@ All copy and links (products, open-source projects, essays, founder bio, contact
 [`src/content.ts`](src/content.ts). The page sections are in `src/components/`, and the colour and
 type tokens (with a dark-mode variant) are in [`src/assets/main.css`](src/assets/main.css).
 
+## Pages
+
+Each page is its own HTML entry (listed in [`vite.config.ts`](vite.config.ts)), so it builds to a
+plain folder that any static host can serve:
+
+- `/` — [`index.html`](index.html) → `src/App.vue`
+- `/close-reader/` — [`close-reader/index.html`](close-reader/index.html) → `src/CloseReaderPage.vue`
+
 The oxblood accent (`#5a2a22`) is shared with [exorCITE](https://refcheck.techstorian.com/).

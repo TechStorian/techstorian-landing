@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import GhostMark from './GhostMark.vue'
-import { exorciteFeatures, exorciteSample, links, openSource, type RefStatus } from '../content'
+import crIcon from '../assets/close-reader-icon.png'
+import {
+  closeReader,
+  closeReaderDemo,
+  exorciteFeatures,
+  exorciteSample,
+  links,
+  openSource,
+  type RefStatus,
+} from '../content'
+
+const crNote = closeReaderDemo.current
 
 const statusLabel: Record<RefStatus, string> = {
   valid: 'Valid',
@@ -62,6 +73,59 @@ const statusLabel: Record<RefStatus, string> = {
             </li>
           </ol>
           <p class="caption">Illustrative example.</p>
+        </div>
+      </article>
+
+      <article class="product">
+        <div class="product-copy">
+          <p class="label kicker">Product · Early release for macOS</p>
+          <h3 class="cr-name">
+            <img class="cr-icon" :src="crIcon" alt="" width="48" height="48" />
+            <span>Close <em>Reader</em></span>
+          </h3>
+          <p class="tagline">Structured research notes for historians.</p>
+          <p class="desc">
+            A note-taking tool for the reading you do away from the computer: in the archive, the
+            library, or with books and microfilm. It works like the research spreadsheet many
+            historians already keep, one row per note, and adds real source records, typed tags and
+            filtering.
+          </p>
+          <ul class="features">
+            <li v-for="f in closeReader.features" :key="f.title">
+              <strong>{{ f.title }}.</strong> {{ f.body }}
+            </li>
+          </ul>
+          <a class="btn btn-primary" :href="links.closeReader">
+            Read about Close Reader <span class="arrow">→</span>
+          </a>
+        </div>
+
+        <div class="report note-slip" aria-label="Example Close Reader note">
+          <div class="report-head">
+            <span class="label">{{ closeReaderDemo.project }}</span>
+            <span class="label">Note 01 of 14</span>
+          </div>
+          <dl class="slip-meta">
+            <div>
+              <dt class="label">Source</dt>
+              <dd>{{ crNote.source }}</dd>
+            </div>
+            <div>
+              <dt class="label">Page</dt>
+              <dd>{{ crNote.page }}</dd>
+            </div>
+          </dl>
+          <p class="note">{{ crNote.sourceDetail }}</p>
+          <p class="slip-text">{{ crNote.text }}</p>
+          <dl class="slip-tags">
+            <div v-for="t in crNote.tags" :key="t.type">
+              <dt class="label"><span class="dot" :class="t.type"></span>{{ t.label }}</dt>
+              <dd>
+                <span v-for="v in t.values" :key="v" class="chip">{{ v }}</span>
+              </dd>
+            </div>
+          </dl>
+          <p class="caption">From the demo project. Its sources are fictional.</p>
         </div>
       </article>
 
@@ -257,6 +321,105 @@ const statusLabel: Record<RefStatus, string> = {
   font-size: 0.7rem;
   color: var(--ink-faint);
 }
+
+/* Close Reader */
+.product + .product {
+  margin-top: clamp(28px, 4vw, 40px);
+}
+
+.cr-name {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.cr-name em {
+  color: var(--oxblood);
+}
+
+.cr-icon {
+  width: 0.9em;
+  height: 0.9em;
+  flex: none;
+}
+
+.note-slip {
+  --cr-theme: #b8913a;
+  --cr-person: #4f8a78;
+  --cr-place: #4f6d8a;
+  --cr-org: #a0522d;
+}
+
+.slip-meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  margin: 18px 0 0;
+}
+
+.slip-meta dd,
+.slip-tags dd {
+  margin: 2px 0 0;
+}
+
+.slip-meta dd {
+  font-size: 1.05rem;
+}
+
+.slip-text {
+  margin-top: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.slip-tags {
+  margin: 4px 0 0;
+}
+
+.slip-tags div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dotted var(--rule);
+}
+
+.slip-tags dt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+}
+
+.slip-tags dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 1px 9px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.92rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.dot.theme { background: var(--cr-theme); }
+.dot.person { background: var(--cr-person); }
+.dot.place { background: var(--cr-place); }
+.dot.org { background: var(--cr-org); }
 
 /* Open-source list */
 .oss {

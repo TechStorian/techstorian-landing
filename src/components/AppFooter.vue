@@ -14,6 +14,7 @@ const year = new Date().getFullYear()
       </div>
       <nav aria-label="Footer">
         <a :href="links.exorcite">exorCITE</a>
+        <a :href="links.closeReader">Close Reader</a>
         <a :href="links.substack">Substack</a>
         <a :href="links.github">GitHub</a>
         <a :href="links.linkedin">LinkedIn</a>

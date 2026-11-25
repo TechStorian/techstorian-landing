@@ -2,11 +2,14 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import BrandMark from './BrandMark.vue'
 
+// On a subpage, pass home="/" so the section links point back to the front page.
+const props = withDefaults(defineProps<{ home?: string }>(), { home: '' })
+
 const nav = [
-  { href: '#software', label: 'Software' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#writing', label: 'Writing' },
-  { href: '#about', label: 'About' },
+  { href: `${props.home}#software`, label: 'Software' },
+  { href: `${props.home}#approach`, label: 'Approach' },
+  { href: `${props.home}#writing`, label: 'Writing' },
+  { href: `${props.home}#about`, label: 'About' },
 ]
 
 const scrolled = ref(false)
@@ -26,7 +29,12 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 <template>
   <header class="header" :class="{ scrolled, open }">
     <div class="wrap bar">
-      <a class="brand" href="#top" aria-label="techstorian, back to top" @click="open = false">
+      <a
+        class="brand"
+        :href="home || '#top'"
+        :aria-label="home ? 'techstorian, front page' : 'techstorian, back to top'"
+        @click="open = false"
+      >
         <BrandMark />
         <span class="wordmark">techstorian</span>
       </a>
@@ -45,7 +53,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
         <a v-for="item in nav" :key="item.href" :href="item.href" @click="open = false">
           {{ item.label }}
         </a>
-        <a class="cta" href="#contact" @click="open = false">Get in touch</a>
+        <a class="cta" :href="`${home}#contact`" @click="open = false">Get in touch</a>
       </nav>
     </div>
   </header>
