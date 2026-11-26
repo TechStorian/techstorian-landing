@@ -85,7 +85,7 @@ const statusLabel: Record<RefStatus, string> = {
           </h3>
           <p class="tagline">Structured research notes for historians.</p>
           <p class="desc">
-            A note-taking tool for the reading you do away from the computer: in the archive, the
+            A note-taking tool for the reading you do in the archive, the
             library, or with books and microfilm. It works like the research spreadsheet many
             historians already keep, one row per note, and adds real source records, typed tags and
             filtering.
@@ -95,9 +95,12 @@ const statusLabel: Record<RefStatus, string> = {
               <strong>{{ f.title }}.</strong> {{ f.body }}
             </li>
           </ul>
-          <a class="btn btn-primary" :href="links.closeReader">
-            Read about Close Reader <span class="arrow">→</span>
-          </a>
+          <div class="actions">
+            <a class="btn btn-primary" :href="closeReader.buyUrl">
+              Buy Close Reader · {{ closeReader.price }} <span class="arrow">→</span>
+            </a>
+            <a class="btn btn-ghost" :href="links.closeReader">Read about it</a>
+          </div>
         </div>
 
         <div class="report note-slip" aria-label="Example Close Reader note">
@@ -228,6 +231,12 @@ const statusLabel: Record<RefStatus, string> = {
 .features strong {
   font-weight: 600;
   color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* The report mock-up */

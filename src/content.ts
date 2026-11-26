@@ -138,6 +138,9 @@ export const founder = {
 export const closeReader = {
   version: '0.1',
   platform: 'macOS 14.4 or newer',
+  // Buy Me a Coffee shop item; it delivers the .dmg after payment.
+  buyUrl: 'https://buymeacoffee.com/techstorian/e/603121',
+  price: '$15 USD',
   features: [
     {
       title: 'Real source records',

@@ -7,6 +7,7 @@ import icon from './assets/close-reader-icon.png'
 import { closeReader, contact } from './content'
 
 const askHref = `mailto:${contact.email}?subject=${encodeURIComponent('Close Reader')}`
+const buyHref = closeReader.buyUrl
 </script>
 
 <template>
@@ -22,12 +23,12 @@ const askHref = `mailto:${contact.email}?subject=${encodeURIComponent('Close Rea
         </h1>
         <p class="tagline">Structured research notes for historians.</p>
         <p class="lede">
-          A note-taking tool for the reading you do away from the computer: in the archive, in the
+          A note-taking tool for the reading you do in the archive, in the
           library, or with books and microfilm. Close Reader keeps every note tied to the source
           it came from, so you can find it, sort it and cite it when it’s time to write.
         </p>
         <div class="actions">
-          <a class="btn btn-primary" :href="askHref">Ask for a copy <span class="arrow">→</span></a>
+          <a class="btn btn-primary" :href="buyHref">Buy Close Reader · {{ closeReader.price }} <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#idea">How it works</a>
         </div>
         <p class="label facts">
@@ -147,10 +148,14 @@ const askHref = `mailto:${contact.email}?subject=${encodeURIComponent('Close Rea
         <p class="lede">
           Close Reader is in its first release, for {{ closeReader.platform }}. It opens with a demo
           project of archive notes on a cholera outbreak in an invented port town, so you can find
-          your way around before you start. Write to us for a copy, or to tell us what your
-          research needs.
+          your way around before you start. Buy it through Buy Me a Coffee and the download is
+          sent to you straight after payment.
         </p>
-        <a class="mail" :href="askHref">{{ contact.email }}</a>
+        <a class="mail" :href="buyHref">Buy Close Reader · {{ closeReader.price }} →</a>
+        <p class="questions">
+          Questions, or something your research needs? Write to
+          <a :href="askHref">{{ contact.email }}</a>.
+        </p>
       </div>
     </section>
   </main>
@@ -449,5 +454,19 @@ kbd {
 
 .mail:hover {
   opacity: 0.75;
+}
+
+.questions {
+  margin: 28px auto 0;
+  max-width: 56ch;
+  font-size: 1rem;
+  opacity: 0.86;
+}
+
+.questions a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 </style>
