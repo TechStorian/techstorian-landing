@@ -65,10 +65,37 @@ const buyHref = closeReader.buyUrl
       </div>
     </section>
 
+    <section id="price" class="section">
+      <div class="wrap">
+        <header class="section-head">
+          <p class="label">Fol. 02 — Terms</p>
+          <div>
+            <h2>{{ closeReader.price.replace(' USD', '') }}, once. Yours to <em>keep</em>.</h2>
+            <p class="lede">
+              Less than a single book from the reading list, and a reasonable expense for a
+              research or travel grant. You pay once and keep it, with every update after that.
+            </p>
+          </div>
+        </header>
+
+        <ul class="features">
+          <li v-for="(t, i) in closeReader.terms" :key="t.title">
+            <span class="num">{{ String(i + 1).padStart(2, '0') }}</span>
+            <h3>{{ t.title }}</h3>
+            <p>{{ t.body }}</p>
+          </li>
+        </ul>
+
+        <div class="actions">
+          <a class="btn btn-primary" :href="buyHref">Buy Close Reader · {{ closeReader.price }} <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="wrap">
         <header class="section-head">
-          <p class="label">Fol. 02 — How notes are kept</p>
+          <p class="label">Fol. 03 — How notes are kept</p>
           <div>
             <h2>Five things, and <em>one</em> file.</h2>
             <p class="lede">
@@ -91,7 +118,7 @@ const buyHref = closeReader.buyUrl
     <section class="section">
       <div class="wrap">
         <header class="section-head">
-          <p class="label">Fol. 03 — At the reading-room desk</p>
+          <p class="label">Fol. 04 — At the reading-room desk</p>
           <div>
             <h2>A quiet window, made for <em>typing fast</em>.</h2>
             <p class="lede">
@@ -127,7 +154,7 @@ const buyHref = closeReader.buyUrl
     <section id="install" class="section">
       <div class="wrap">
         <header class="section-head">
-          <p class="label">Fol. 04 — Opening it the first time</p>
+          <p class="label">Fol. 05 — Opening it the first time</p>
           <div>
             <h2>One <em>extra</em> step on a Mac.</h2>
             <p class="lede">
@@ -143,13 +170,13 @@ const buyHref = closeReader.buyUrl
 
     <section class="section ask">
       <div class="wrap inner">
-        <p class="label">Fol. 05 — Correspondence</p>
+        <p class="label">Fol. 06 — Correspondence</p>
         <h2>Try it on your own <em>sources</em>.</h2>
         <p class="lede">
           Close Reader is in its first release, for {{ closeReader.platform }}. It opens with a demo
           project of archive notes on a cholera outbreak in an invented port town, so you can find
-          your way around before you start. Buy it through Buy Me a Coffee and the download is
-          sent to you straight after payment.
+          your way around before you start. Pay once through Buy Me a Coffee: the download is sent
+          to you straight after payment, and your license key covers every future update.
         </p>
         <a class="mail" :href="buyHref">Buy Close Reader · {{ closeReader.price }} →</a>
         <p class="questions">

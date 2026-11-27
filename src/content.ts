@@ -140,7 +140,27 @@ export const closeReader = {
   platform: 'macOS 14.4 or newer',
   // Buy Me a Coffee shop item; it delivers the .dmg after payment.
   buyUrl: 'https://buymeacoffee.com/techstorian/e/603121',
-  price: '$15 USD',
+  price: '$19 USD',
+  // The terms of sale, shown on the subpage. Keep in step with the license email
+  // (netlify/lib/close-reader.mjs), which promises every future update.
+  terms: [
+    {
+      title: 'Pay once, keep it',
+      body: 'One payment of $19. No subscription and no yearly renewal. The copy you buy is yours to keep and use for as long as you like.',
+    },
+    {
+      title: 'Every update included',
+      body: 'Your license key unlocks every future version of Close Reader, at no extra cost.',
+    },
+    {
+      title: 'No account, no cloud',
+      body: 'Nothing to sign up for and nothing to sync. Close Reader works offline, in a reading room with no Wi-Fi, and your notes never leave your computer unless you send them.',
+    },
+    {
+      title: 'Your notes stay yours',
+      body: 'A project is a single file you can back up or copy anywhere. Export to CSV or Markdown at any time, so your research is never locked inside the app.',
+    },
+  ],
   features: [
     {
       title: 'Real source records',

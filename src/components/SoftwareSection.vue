@@ -101,6 +101,7 @@ const statusLabel: Record<RefStatus, string> = {
             </a>
             <a class="btn btn-ghost" :href="links.closeReader">Read about it</a>
           </div>
+          <p class="label terms">Pay once · Every update included · No account</p>
         </div>
 
         <div class="report note-slip" aria-label="Example Close Reader note">
@@ -237,6 +238,10 @@ const statusLabel: Record<RefStatus, string> = {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.terms {
+  margin-top: 14px;
 }
 
 /* The report mock-up */
