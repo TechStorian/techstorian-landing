@@ -104,7 +104,7 @@ function githubFake() {
   const calls = []
   const fetch = async (url, init) => {
     calls.push({ url, init })
-    if (url.endsWith('/releases/tags/v0.2.0')) {
+    if (url.endsWith('/releases/tags/v0.2.0') || url.endsWith('/releases/tags/0.3.0')) {
       return Response.json({ assets: [{ id: 77, name: 'Close-Reader-0.2.0-macOS-arm64.dmg', size: 123 }] })
     }
     if (url.endsWith('/releases/assets/77')) {
@@ -131,6 +131,18 @@ test('download: valid key gets the signed link', async () => {
   assert.equal(gh.calls[1].init.headers.accept, 'application/octet-stream')
 })
 
+test('download: a release tagged without the v is found too', async () => {
+  const { store } = setup()
+  const gh = githubFake()
+  const deps = { publicKey: privateKey, store, githubToken: 't', githubRepo: 'o/r', fetch: gh.fetch }
+  const key = createLicense(privateKey, { email: 'a@b.org', order: 1 })
+  // the fake's 0.3.0 release lists only the 0.2.0 asset, so it gets as far as the asset check
+  const res = await handleDownload(downloadRequest(key, 'version=0.3.0&arch=arm64'), deps)
+  assert.equal(res.status, 404)
+  assert.match((await res.json()).error, /no download of version 0\.3\.0/)
+  assert.deepEqual(gh.calls.map((c) => c.url.split('/releases/')[1]), ['tags/v0.3.0', 'tags/0.3.0'])
+})
+
 test('download: refused for missing, forged, refunded or blocked keys and bad input', async () => {
   const { store, deps: hookDeps } = setup()
   const gh = githubFake()
@@ -140,7 +152,7 @@ test('download: refused for missing, forged, refunded or blocked keys and bad in
   assert.equal((await handleDownload(downloadRequest(key.slice(0, -4) + 'AAAA'), deps)).status, 401)
   assert.equal((await handleDownload(downloadRequest(key, 'version=../x&arch=arm64'), deps)).status, 400)
   assert.equal((await handleDownload(downloadRequest(key, 'version=0.2.0&arch=ppc'), deps)).status, 400)
-  assert.equal((await handleDownload(downloadRequest(key, 'version=0.3.0&arch=arm64'), deps)).status, 404)
+  assert.equal((await handleDownload(downloadRequest(key, 'version=0.4.0&arch=arm64'), deps)).status, 404)
   assert.equal((await handleDownload(downloadRequest(key, 'version=0.2.0&arch=x86_64'), deps)).status, 404)
   assert.equal((await handleDownload(downloadRequest(key), { ...deps, revokedOrders: ['4242'] })).status, 403)
   // a refund through the webhook withdraws the key

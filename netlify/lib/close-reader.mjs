@@ -100,7 +100,7 @@ export async function handleWebhook(req, deps) {
 /**
  * The app asks here for an update:  GET ?version=0.2.0&arch=arm64  with
  * "Authorization: Bearer <license key>". A valid key gets a short-lived link to the .dmg,
- * which is an asset of the GitHub release v<version> in the private app repository.
+ * which is an asset of the GitHub release v<version> (or <version>) in the private app repository.
  *
  * deps: { publicKey, store, revokedOrders, githubToken, githubRepo, fetch }
  */
@@ -132,7 +132,9 @@ export async function handleDownload(req, deps) {
       redirect: 'manual',
     })
 
-  const release = await github(`/releases/tags/v${version}`)
+  // the release may be tagged v0.2.0 or 0.2.0
+  let release = await github(`/releases/tags/v${version}`)
+  if (release.status === 404) release = await github(`/releases/tags/${version}`)
   if (release.status === 404) return json(404, { error: `Version ${version} is not available for download.` })
   if (!release.ok) return json(502, { error: `The download server could not be reached (${release.status}).` })
   const asset = ((await release.json()).assets || []).find((a) => a.name === name)

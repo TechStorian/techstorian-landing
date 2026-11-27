@@ -40,7 +40,7 @@ licensed update downloads (the app side is described in the close-reader reposit
   second email.
 - `GET /api/close-reader/download?version=…&arch=…` ([`netlify/functions/close-reader-download.mjs`](netlify/functions/close-reader-download.mjs))
   is called by the app with the key. A valid key gets a short-lived link to the `.dmg`,
-  which is an asset of the GitHub release `v<version>` of the private close-reader repository.
+  which is an asset of the GitHub release `v<version>` (or `<version>`) of the private close-reader repository.
 - `public/close-reader/latest.json` is the public file the app checks for new versions.
   The close-reader repository's `packaging/make_update_json.py` writes it.
 
