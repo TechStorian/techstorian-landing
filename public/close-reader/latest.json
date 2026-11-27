@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "date": "2026-11-27",
+  "notes": [
+    "First release"
+  ],
+  "page": "https://techstorian.com/close-reader/",
+  "minimum_macos": "14.4"
+}
